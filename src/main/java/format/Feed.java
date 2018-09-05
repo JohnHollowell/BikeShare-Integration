@@ -3,37 +3,32 @@ package format;
  * Copyright (c) 2018.  John Hollowell (hollowe)
  */
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 /**
- * A data structure to contain the feed information for different feeds of data provided by the GBFS API
+ * A data structure to contain the feed information for different feeds of data provided by the API
  *
  * @author John
- * @
+ *
  */
 public class Feed {
 	private static Map<String, Feed> feeds = new HashMap<String, Feed>();
 
 	private String name;
-	private String urlStr;
-	private URL    url;
+	private String url;
 
 	/**
-	 * Constructor stores name and urlStr, as well as attempting to create a URL from urlStr.
-	 * Adds feed to <code>feeds</code> map with key <code>name</code>
+	 * Constructor stores the name and string representation of the URL.
+	 * Adds feed to <code>feeds</code> map with key <code>name</code>.
 	 *
 	 * @param name the name of the feed
-	 * @param urlStr a string of the url where the feed is found
+	 * @param url a string of the url where the feed is found
 	 */
-	public Feed(String name, String urlStr) throws MalformedURLException {
+	public Feed(String name, String url) {
 		this.name = name;
-		this.urlStr = urlStr;
-		this.url = new URL(urlStr);
+		this.url = url;
 		feeds.put(name, this);
 	}
 
@@ -41,11 +36,7 @@ public class Feed {
 		return name;
 	}
 
-	public String getUrlStr() {
-		return urlStr;
-	}
-
-	public URL getUrl() {
+	public String getUrl() {
 		return url;
 	}
 
@@ -61,13 +52,13 @@ public class Feed {
 	public boolean equals(Object obj) {
 		if (obj instanceof Feed){
 			return this.name.equals(((Feed)obj).name) &&
-				   this.urlStr.equals(((Feed)obj).urlStr);
+				   this.url.equals(((Feed)obj).url);
 		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "Feed " + name + " at " + urlStr;
+		return "Feed " + name + " at " + url;
 	}
 }

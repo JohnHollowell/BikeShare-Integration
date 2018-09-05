@@ -18,6 +18,5 @@ dependencies {
     compile 'org.json:org.json:chargebee-1.0'
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    //IDEA annotation definitions (DEV only)
     compile group: 'org.jetbrains', name: 'annotations', version: '16.0.2'
 }

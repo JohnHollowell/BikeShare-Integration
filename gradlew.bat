@@ -1,4 +1,5 @@
-@if "%DEBUG%" == "" @echo off
+@rem misspelt to avoid IDEA catching - JH
+@if "%DEBBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows
